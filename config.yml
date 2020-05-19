@@ -1,0 +1,28 @@
+# ===== OneInTheChamber =====
+# Max players per match
+max_players_per_match: 16
+min_players_for_match: 2
+
+# How much arrows should be added to the killer's inventory on a sword kill or bow kill
+sword_kill_arrows: 1
+bow_kill_arrows: 1
+
+# Remove arena's spawn radius
+remove_spawn_radius: 5.5
+
+# Ex. {match time in seconds} - {30 seconds ending} = 600 - 30 = 570
+match_time: 570
+# Seconds before a match is started
+# if {min_players_for_match} <= {current player count in queue} < {max_players_per_match}
+match_force_start_time: 30
+
+# Do you want to create a harmless explosion at player's death location?
+explosion_on_death: true
+
+# Allowed commands while in a game
+allowed_commands:
+  - oitc
+
+# Useful in a server crash scenario
+# and must be enabled if you want items to be automatically returned when a player disconnects while in a match and rejoins the server after.
+player_state_save_file: true

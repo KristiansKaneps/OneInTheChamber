@@ -1,0 +1,150 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'dev.ethp.bukkit' version '0.1.6'
+}
+
+version = '1.0.0'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+bukkit {
+    name 'OneInTheChamber'
+    main 'lv.kaneps.oitc.OITC'
+
+    description 'Adds new modified tools to the game.'
+
+    author 'kristianskaneps'
+
+    api {
+        version '1.15'
+    }
+
+    command 'oitc', {
+        description 'Base command for OITC plugin.'
+        permission 'oitc.command'
+        usage 'Invalid command. Use: /oitc help'
+    }
+
+    permission 'oitc.user', {
+        allow ALL
+        child 'oitc.command', INHERIT
+        child 'oitc.arena.list', INHERIT
+        child 'oitc.join', INHERIT
+        child 'oitc.leave', INHERIT
+        child 'oitc.vote', INHERIT
+        child 'oitc.help', INHERIT
+    }
+
+    permission 'oitc.admin', {
+        allow OPERATOR
+        child 'oitc.user', INHERIT
+        child 'oitc.arena.*', INHERIT
+        child 'oitc.help.advanced', INHERIT
+    }
+
+    permission 'oitc.command', {
+        deny ALL
+    }
+
+    permission 'oitc.help', {
+        deny ALL
+    }
+
+    permission 'oitc.help.advanced', {
+        deny ALL
+        child 'oitc.help', INHERIT
+    }
+
+    permission 'oitc.join', {
+        deny ALL
+    }
+
+    permission 'oitc.leave', {
+        deny ALL
+    }
+
+    permission 'oitc.vote', {
+        deny ALL
+    }
+
+    permission 'oitc.arena.*', {
+        deny ALL
+        child 'oitc.arena.listall', INHERIT
+        child 'oitc.arena.create', INHERIT
+        child 'oitc.arena.remove', INHERIT
+        child 'oitc.arena.spawn.add', INHERIT
+        child 'oitc.arena.spawn.remove', INHERIT
+        child 'oitc.arena.validate', INHERIT
+        child 'oitc.arena.displayname', INHERIT
+    }
+
+    permission 'oitc.arena.list', {
+        deny ALL
+    }
+
+    permission 'oitc.arena.listall', {
+        deny ALL
+        child 'oitc.arena.list', INHERIT
+    }
+
+    permission 'oitc.arena.create', {
+        deny ALL
+        child 'oitc.arena.select', INHERIT
+    }
+
+    permission 'oitc.arena.remove', {
+        deny ALL
+        child 'oitc.arena.select', INHERIT
+    }
+
+    permission 'oitc.arena.spawn.add', {
+        deny ALL
+        child 'oitc.arena.select', INHERIT
+    }
+
+    permission 'oitc.arena.spawn.remove', {
+        deny ALL
+        child 'oitc.arena.select', INHERIT
+    }
+
+    permission 'oitc.arena.validate', {
+        deny ALL
+        child 'oitc.arena.select', INHERIT
+    }
+
+    permission 'oitc.arena.displayname', {
+        deny ALL
+        child 'oitc.arena.select', INHERIT
+    }
+
+    permission 'oitc.arena.select', {
+        deny ALL
+    }
+}
+
+jar {
+    archiveName project.name + '-' + project.version + '.jar'
+
+    from('.') {
+        include '*.yml'
+    }
+
+    entryCompression ZipEntryCompression.DEFLATED
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir "src/main/java"
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    bukkitApi()
+}
