@@ -23,7 +23,7 @@ public class ArenaPlayerState extends PlayerStateSave
 		glowing = false;
 		invulnerable = false;
 		health = 20.0d;
-		remainingAir = 0;
+		remainingAir = 300;
 		saturation = 0;
 		foodLevel = 20;
 		expLevel = 0;
