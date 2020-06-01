@@ -12,7 +12,7 @@ bukkit {
     name 'OneInTheChamber'
     main 'lv.kaneps.oitc.OITC'
 
-    description 'Adds new modified tools to the game.'
+    description 'A minecraft minigame.'
 
     author 'kristianskaneps'
 
